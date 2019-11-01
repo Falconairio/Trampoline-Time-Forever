@@ -111,8 +111,6 @@ function Trampoline(canvas) {
     this.y
 }
 
-Trampoline.prototype.setDirection() {}
-
 Trampoline.prototype.didCollide() {}
 
 Trampoline.prototype.draw() {}
@@ -134,6 +132,8 @@ function Character(canvas,speed,x,y) {
 Character.prototype.draw() {}
 
 Character.prototype.updatePosition() {}
+
+Character.prototype.setDirection() {}
 
 Character.prototype.isWithinLimits() {}
 ```
