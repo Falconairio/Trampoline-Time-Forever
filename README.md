@@ -30,6 +30,7 @@ In its base form, the game is drawing a trampoline to keep a character from hitt
 ---
 
 ## Backlog
+- Divide in the middle of the game to make it look more like a DS screen
 - Lives
 - More characters on screen
 - Name input on menu -> Leaderboard
@@ -189,12 +190,12 @@ List of methods that need to be written.
 
 
 ### Trello
-[Link url](https://trello.com)
+[Link url](https://trello.com/b/nvoaNV1B/trampoline-time-forever)
 
 
 ### Git
 URls for the project repo and deploy
-[Link Repo](http://github.com)
+[Link Repo](https://github.com/Falconairio/Trampoline-Time-Forever)
 [Link Deploy](http://github.com)
 
 
