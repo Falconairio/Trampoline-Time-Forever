@@ -163,6 +163,41 @@ label {
     flex-direction: column;
     justify-content: center;
 }
-.mainhowto button {
+.backbutton {
     margin-left: 510px;
+}
+#bottomoptions {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+.abouttext {
+    color: white; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid yellow;
+    border-radius: 10px;
+    width: 500px;
+    margin-left: 300px;
+}
+.abouttext p {
+    line-height: 40px;
+}
+.test {
+    display: flex;
+    flex-direction: row;
+    margin-top: 100px;
+}
+.test img {
+    width: 200px;
+    height:400px;
+    padding-left: 0px;
+    border: 2px solid yellow;
+    border-radius: 10px;
+    margin-left: 50px;
+}
+.abouttext h2 {
+    font-size: 40px;
 }

@@ -10,6 +10,9 @@ function main() {
   var game; // instance of the Game
   var splashScreen; // Start Screen
   var gameOverScreen; // Game Over Screen
+  var AboutScreen;//About the programmer
+  var NameScreen;//Screen where you enter your name
+  var name = " ";
   var HowTo; //How to Play Screen 
 
   // -- splash screen
@@ -22,7 +25,8 @@ function main() {
       <img src = "../images/Forever.png" alt = "bruh">
     </div>
     <div id = bottomoptions>
-      <label>Enter Your Name</label><input type = "text" name = "yourname">
+      <button id = "aboutcreator">About the programmer</button>
+      <button id = "entername">Enter your name</button>
       <button id = "howtoplay">How to play</button>
       <button id = "startbutton">Begin</button>
     </div>
@@ -30,20 +34,78 @@ function main() {
   `);
     
     document.body.appendChild(splashScreen);
-    var startButton = splashScreen.querySelector('#startbutton');
-    startButton.addEventListener('click', function() {
-      startGame();
-    });
+
+    var aboutButton = splashScreen.querySelector('#aboutcreator');
+    aboutButton.addEventListener('click', function() {
+        removeSplashScreen();
+        createAboutScreen();
+    })
+
+    var nameButton = splashScreen.querySelector('#entername');
+    nameButton.addEventListener('click', function() {
+        removeSplashScreen();
+        createNameScreen();
+    })
+
     var howToButton = splashScreen.querySelector('#howtoplay');
     howToButton.addEventListener('click', function() {
       removeSplashScreen();
       createHowToScreen();
+    });
+
+    var startButton = splashScreen.querySelector('#startbutton');
+    startButton.addEventListener('click', function() {
+      startGame();
     });
   }
 
   function removeSplashScreen() {
     splashScreen.remove();
   }
+
+  function createAboutScreen() {
+    AboutScreen = buildDom(`
+        <main class = 'aboutmain'>
+        <div class = "test">
+            <div class = "abouttext">
+                <h2>About the Programmer</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique deserunt quas itaque, eligendi dolore, saepe quae doloribus quaerat odio, placeat adipisci quisquam consectetur voluptates nam accusamus aperiam hic alias provident? Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique deserunt quas itaque, eligendi dolore, saepe quae doloribus quaerat odio, placeat adipisci quisquam consectetur voluptates nam accusamus aperiam hic alias provident?</p>
+            </div>
+            <img src = "../images/newMan.png">
+        </div>
+            <button class = 'backbutton'>Back</button>
+        </main>
+    `)
+    document.body.appendChild(AboutScreen);
+    var backButton = AboutScreen.querySelector('.backbutton');
+    backButton.addEventListener('click', function() {
+      removeAboutScreen();
+      createSplashScreen();
+    });
+  }
+
+  function removeAboutScreen() {
+    AboutScreen.remove();
+  }
+
+  function createNameScreen() {
+    NameScreen = buildDom(`
+    <main class = 'namemain'>
+        <button class = 'backbutton'>Back</button>
+    </main>
+    `)
+    document.body.appendChild(NameScreen);
+    var backButton = NameScreen.querySelector('.backbutton');
+    backButton.addEventListener('click', function() {
+      removeNameScreen();
+      createSplashScreen();
+    });
+  }
+
+  function removeNameScreen() {
+    NameScreen.remove();
+  }
+
   function createHowToScreen() {
     HowTo = buildDom(`
     <main class = 'mainhowto'>
@@ -51,11 +113,11 @@ function main() {
             <h2>How To Play</h2>
             <p>Keep the falling red square from touching the bottom. You do this by drawing a (currently invisible) line, which will bounce the red square in a random direction, it will also rebound on the walls. You gain points for every bounce and you instantly lose if the red square touches the bottom.</br> Updates will be made to this page.</p>
         </div>
-        <button id = 'backbutton'>Back</button>
+        <button class = 'backbutton'>Back</button>
     </main>
     `)
     document.body.appendChild(HowTo);
-    var backButton = HowTo.querySelector('#backbutton');
+    var backButton = HowTo.querySelector('.backbutton');
     backButton.addEventListener('click', function() {
         console.log('cringe');
       removeHowToScreen();
