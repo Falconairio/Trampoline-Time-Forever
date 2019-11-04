@@ -1,0 +1,129 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+    line-height: 1;
+    background-image: url(../NightSky.png);
+    background-size: cover ;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+.bigwords {
+    display: flex;
+    flex-direction: column;
+    align-items: center;   
+    justify-content: center;
+    margin-top: 100px;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 50px;
+}
+body {
+    font-family: 'McLaren', cursive;
+}
+button {
+    height: 100px;
+    width: 200px;
+    font-size: 20px;
+    background-color: black;
+    color: white;
+    font-family: 'McLaren', cursive;
+    border-radius: 5px;
+    margin-top: 60px;
+}
+canvas { 
+    border: 1px solid black; 
+    height: 720px;
+    width: 1180px;
+    margin: 0;
+    padding: 0;
+    margin-bottom: 0;
+}
+.game-container {
+    display:flex;
+    flex-direction: row;
+}
+#left-bar {
+    height:722px;
+    width:50px;
+    background-color: black;
+    margin-bottom: 0;
+    display: flex;
+    flex-direction: column;
+}
+.value {
+    color: red;
+    font-size: 50px;
+    writing-mode: vertical-lr;  
+    text-orientation: upright;
+    padding-top: 10px;
+}
+#right-bar {
+    height:722px;
+    width:50px;
+    background-color: black;
+    margin-bottom: 0;
+}
+.label { 
+    width:1px;
+    color: cyan;
+    font-size: 50px;
+    writing-mode: vertical-lr;  
+    text-orientation: upright;
+    letter-spacing: -10px;
+    padding-top: 20px;
+}
+strong {
+    color: yellow;
+}
+#gameovermain {
+    display: flex;
+    flex-direction: column;
+    align-items: center;   
+    justify-content: center;
+    margin-top: 100px;
+    color: white;
+    font-size: 50px;
+}
+h1{
+    font-size: 150px;
+    margin-bottom: 100px;
+}
+img {
+    height: 100px;
+    margin-bottom: 50px;
+}

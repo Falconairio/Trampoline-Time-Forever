@@ -15,14 +15,15 @@ function main() {
 
   function createSplashScreen() {
     splashScreen = buildDom(`
-    <main>
-      <h1>Trampoline Time Forever</h1>
-      <button>Begin</button>
+    <main class = "bigwords">
+      <h1>Trampoline Time</h1>
+      <img src = "Forever.png" alt = "bruh">
+      <button id = "startbutton">Begin</button>
     </main>
   `);
+    
 
     document.body.appendChild(splashScreen);
-
     var startButton = splashScreen.querySelector('button');
     startButton.addEventListener('click', function() {
       startGame();
@@ -37,23 +38,22 @@ function main() {
 
   function createGameScreen() {
     var gameScreen = buildDom(`
-    <main class="game container">
-      <header>
-        <div class="lives">
-          <span class="label">Lives:</span>
+    <main class="game-container">
+      <div>
+        <div id = "left-bar">
+          <span class="label">Score<strong>↓</strong></span>
           <span class="value"></span>
         </div>
-        <div class="score">
-          <span class="label">Score:</span>
-          <span class="value"></span>
-        </div>
-      </header>
+      </div>
       <div class="canvas-container">
         <canvas></canvas>
       </div>
+      <div>
+        <div id = "right-bar">
+        </div>
+      </div>
     </main>
   `);
-
     document.body.appendChild(gameScreen);
     return gameScreen;
   }
@@ -66,8 +66,8 @@ function main() {
 
   function createGameOverScreen(score) {
     gameOverScreen = buildDom(`
-      <main>
-        <h1>Game over</h1>
+      <main id = "gameovermain">
+        <h1>Game Over</h1>
         <p>Your score: <span></span></p>
         <button>Restart</button>
     </main>
