@@ -65,6 +65,9 @@ button {
     border-radius: 5px;
     margin-top: 60px;
 }
+button:focus {
+    outline: none;
+}
 canvas { 
     border: 1px solid black; 
     height: 720px;
@@ -152,9 +155,6 @@ label {
     margin-left: 366px;
     margin-top: 200px;
 }
-.howtotext h2 {
-    font-size: 40px;
-}
 .howtotext p {
     line-height: 40px;
 }
@@ -166,10 +166,14 @@ label {
 .backbutton {
     margin-left: 510px;
 }
-#bottomoptions {
+.bottomoptions {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
+    padding-left: 10px;
+}
+.bottomoptions button {
+    margin-right:  40px;
 }
 .abouttext {
     color: white; 
@@ -198,6 +202,41 @@ label {
     border-radius: 10px;
     margin-left: 50px;
 }
-.abouttext h2 {
-    font-size: 40px;
+#nameform {
+    color: white; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid yellow;
+    border-radius: 10px;
+    width: 500px;
+    margin-left: 366px;
+    margin-top: 200px;
+}
+h2 {
+    font-size:40px;
+}
+input[type=text] {
+    border: 2px solid yellow;
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color:white;
+    margin-right: 30px;
+    font-size: 20px;
+    font-family: 'McLaren', cursive;
+}
+input[type=text]:focus {
+    outline: none;
+  }
+#namesubmit {
+    margin-bottom: 10px;
+}
+.goButtons {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.goButtons button {
+    margin-right: 20px;
 }

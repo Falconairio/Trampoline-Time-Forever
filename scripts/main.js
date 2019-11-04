@@ -24,7 +24,7 @@ function main() {
       <img src = "../images/TrampolineTime.png">
       <img src = "../images/Forever.png" alt = "bruh">
     </div>
-    <div id = bottomoptions>
+    <div class = bottomoptions>
       <button id = "aboutcreator">About the programmer</button>
       <button id = "entername">Enter your name</button>
       <button id = "howtoplay">How to play</button>
@@ -91,10 +91,23 @@ function main() {
   function createNameScreen() {
     NameScreen = buildDom(`
     <main class = 'namemain'>
+        <div id = "nameform">
+            <h2>Enter your name to be put on the Leaderboard</h2>
+            <form>
+                <input type = "text">
+                <button id = "namesubmit">Submit Name</button>
+            </form>
+        </div>
         <button class = 'backbutton'>Back</button>
     </main>
     `)
     document.body.appendChild(NameScreen);
+    var submitValue = NameScreen.getElementsByTagName('input').value
+    var submitButton = NameScreen.querySelector('#namesubmit');
+    submitButton.addEventListener('click', function() {
+        name = submitValue;
+        console.log(name);
+    })
     var backButton = NameScreen.querySelector('.backbutton');
     backButton.addEventListener('click', function() {
       removeNameScreen();
@@ -162,12 +175,18 @@ function removeHowToScreen() {
       <main id = "gameovermain">
         <h1>Game Over</h1>
         <p>Your score: <span></span></p>
-        <button>Restart</button>
+        <div class ="goButtons">
+            <button>Back to Main Menu</button>
+            <button>See the Leaderboards</button>
+        </div>
     </main>
     `);
 
     var button = gameOverScreen.querySelector('button');
-    button.addEventListener('click', startGame);
+    button.addEventListener('click', function() {
+        removeGameOverScreen();
+        createSplashScreen();
+    });
 
     var span = gameOverScreen.querySelector('span');
     span.innerText = score;
