@@ -17,7 +17,7 @@ function main() {
     splashScreen = buildDom(`
     <main class = "bigwords">
       <h1>Trampoline Time</h1>
-      <img src = "../images/Forever.png" alt = "bruh">
+      <img src = "./images/Forever.png" alt = "bruh">
       <button id = "startbutton">Begin</button>
     </main>
   `);

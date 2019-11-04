@@ -70,34 +70,30 @@ gameOver(){}
 Game() {
   this.canvas;
   this.ctx;
-  this.man;
+  this.character;
   this.trampoline;
   this.gameIsOver;
   this.gameScreen;
   this.score;
+  this.mouseDownX;
+  this.mouseDownY;
+  this.mouseUpX;
+  this.mouseUpY;
 }
 
-Game.prototype.start(){}
+Game.prototype.start = function(){}
 
-Game.prototype.startLoop(){
-}
+Game.prototype.startLoop(){}
 
 Game.prototype.checkCollisions{
 }
+Game.prototype.passGameOverCallback = function(){}
 
-Game.prototype.clearCanvas = function(){
-}
-
-Game.prototype.updateCanvas = function(){
-}
-
-Game.prototype.drawCanvas = function(){ 
-}
-
-Game.prototype.setGameOver = function(){
-}
+Game.prototype.GameOver = function(){}
 
 Game.prototype.removeGameScreen = function(){}
+
+Game.prototype.updateGameStats = function(){}
 ```
 
 #### trampoline.js
@@ -107,12 +103,12 @@ function Trampoline(canvas) {
     this.canvas;
     this.ctx;
 
-    this.size;
+    this.sizewidth;
+    this.sizeheight;
+
     this.x;
     this.y
 }
-
-Trampoline.prototype.didCollide() {}
 
 Trampoline.prototype.draw() {}
 ```
@@ -195,8 +191,8 @@ List of methods that need to be written.
 
 ### Git
 URls for the project repo and deploy
-[Link Repo](https://github.com/Falconairio/Trampoline-Time-Forever)
-[Link Deploy](http://github.com)
+[Link to the Repo](https://github.com/Falconairio/Trampoline-Time-Forever)
+[Play the Game](https://falconairio.github.io/Trampoline-Time-Forever/)
 
 
 ### Slides
