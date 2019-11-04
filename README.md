@@ -47,21 +47,25 @@ In its base form, the game is drawing a trampoline to keep a character from hitt
 #### main.js
 
 ```javascript
-buildStartScreen(){}
 
-removeStartScreen(){}
+function main() {
+   function createSplashScreen() {}
 
-buildGameScreen(){}
+   function removeSplashScreen() {}
 
-removeGameScreen(){}
+   function createGameScreen() {}
 
-buildGOScreen(){}
+   function removeGameScreen() {}
 
-removeGOScreen(){}
+   function createGameOverScreen() {}
 
-startGame(){}
+   function removeGameOverScreen() {}
 
-gameOver(){}
+   function startGame() {}
+
+   function gameOver() {}
+}
+
 ```
 
 #### game.js
@@ -111,6 +115,8 @@ function Trampoline(canvas) {
 }
 
 Trampoline.prototype.draw() {}
+
+Trampoline.prototype.fill() {}
 ```
 
 #### character.js
@@ -125,14 +131,16 @@ function Character(canvas,speed,x,y) {
     this.y;
     this.direction;
     this.speed;
+    this.xspeed;
+    this.yspeed;
 }
 Character.prototype.draw() {}
 
 Character.prototype.updatePosition() {}
 
-Character.prototype.setDirection() {}
+Character.prototype.didCollide() {}
 
-Character.prototype.isWithinLimits() {}
+Character.prototype.handleScreenCollision() {}
 ```
 ---
 
@@ -172,10 +180,9 @@ List of methods that need to be written.
 - Game - updateCanvas
 - Game - startLoop
 - Game - addEventListener * 2
-- Man - Constructor
-- Man - fallGravity
-- Man - collisionCheck
-- Man - remove
+- Character - Constructor
+- Character - fall
+- Character - collisionCheck
 - Trampoline - Constructor
 - Trampoline - Collision 
 - Trampoline - dissappear
@@ -186,15 +193,15 @@ List of methods that need to be written.
 
 
 ### Trello
-[Link url](https://trello.com/b/nvoaNV1B/trampoline-time-forever)
+[Go to Trello](https://trello.com/b/nvoaNV1B/trampoline-time-forever)
 
 
 ### Git
 URls for the project repo and deploy
-[Link to the Repo](https://github.com/Falconairio/Trampoline-Time-Forever)
+[Go to the Github Repo](https://github.com/Falconairio/Trampoline-Time-Forever)
 [Play the Game](https://falconairio.github.io/Trampoline-Time-Forever/)
 
 
 ### Slides
 URls for the project presentation (slides)
-[Link Slides.com](http://slides.com)
+[Go to the Presentation](http://slides.com)
