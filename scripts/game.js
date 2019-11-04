@@ -33,7 +33,6 @@ Game.prototype.start = function() {
   // Create a new player created trampoline for the current game
 
   this.character = new Character(this.canvas, 5);
- 
   // Add event listener for moving the player
   this.handleMouseDown = function(event) {
     //console.log('mouse down x = ' + event.clientX);
@@ -95,6 +94,7 @@ Game.prototype.checkCollisions = function() {
     this.mouseUpX = null;
     this.mouseUpY = null;
     this.score +=1;
+    
   }
   if(this.character.isInsideScreen()) {
       this.gameOver();

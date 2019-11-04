@@ -17,7 +17,7 @@ function main() {
     splashScreen = buildDom(`
     <main class = "bigwords">
       <h1>Trampoline Time</h1>
-      <img src = "Forever.png" alt = "bruh">
+      <img src = "../images/Forever.png" alt = "bruh">
       <button id = "startbutton">Begin</button>
     </main>
   `);
@@ -109,10 +109,10 @@ function main() {
     removeGameScreen();
     createGameOverScreen(score);
   }
-
   // -- initialize Splash screen on initial start
 
   createSplashScreen();
 }
 
 window.addEventListener('load', main);
+

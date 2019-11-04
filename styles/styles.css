@@ -25,7 +25,7 @@ footer, header, hgroup, menu, nav, section {
 }
 body {
     line-height: 1;
-    background-image: url(../NightSky.png);
+    background-image: url(../images/NightSky.png);
     background-size: cover ;
 }
 ol, ul {

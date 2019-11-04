@@ -8,6 +8,8 @@ function Character(canvas, speed) {
     this.x = this.canvas.width/2 - 25;
     this.y = this.x - 500;
     this.speed = speed;
+    this.xspeed = 0;
+    this.yspeed = 1;
   }
   Character.prototype.draw = function() {
   
@@ -19,7 +21,8 @@ function Character(canvas, speed) {
   
   Character.prototype.updatePosition = function() {
     //console.log(this.x + " " + this.y);
-    this.y = this.y + this.speed;
+    this.y = this.y + (this.yspeed * this.speed);
+    this.x = this.x + (this.speed * this.xspeed)
   };
   
   Character.prototype.isInsideScreen = function() {
@@ -46,13 +49,26 @@ function Character(canvas, speed) {
     var crossTop = charTop <= trampBottom && charTop >= trampTop;
   
     if ((crossLeft || crossRight) && (crossTop || crossBottom)) {
-        this.speed = -5;
+        let randomNum = Math.random();
+        if(randomNum > 0.66) {
+            this.xspeed = 1;
+            this.yspeed = -1;
+        } else if(randomNum > 0.33) {
+            this.xspeed = 0;
+            this.yspeed = -1;
+        } else {
+            this.xspeed = -1;
+            this.yspeed = -1;
+        }
       return true;
     }
     return false;
   };
   Character.prototype.handleScreenCollision = function() {  
     var screenTop = 0; 
-
-    if(this.y < screenTop) this.speed = 5;
+    var screenLeft = 50;
+    var screenRight = this.canvas.width;
+    if(this.y < screenTop) this.yspeed = 1;
+    else if(this.x >= screenRight) this.xspeed = -1;
+    else if(this.x <= screenLeft) this.xspeed = 1;
   };
