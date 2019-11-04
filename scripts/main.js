@@ -10,30 +10,61 @@ function main() {
   var game; // instance of the Game
   var splashScreen; // Start Screen
   var gameOverScreen; // Game Over Screen
+  var HowTo; //How to Play Screen 
 
   // -- splash screen
 
   function createSplashScreen() {
     splashScreen = buildDom(`
     <main class = "bigwords">
-      <h1>Trampoline Time</h1>
+    <div id = "title">
+      <img src = "../images/TrampolineTime.png">
       <img src = "../images/Forever.png" alt = "bruh">
+    </div>
+    <div id = bottomoptions>
+      <label>Enter Your Name</label><input type = "text" name = "yourname">
+      <button id = "howtoplay">How to play</button>
       <button id = "startbutton">Begin</button>
+    </div>
     </main>
   `);
     
-
     document.body.appendChild(splashScreen);
-    var startButton = splashScreen.querySelector('button');
+    var startButton = splashScreen.querySelector('#startbutton');
     startButton.addEventListener('click', function() {
       startGame();
+    });
+    var howToButton = splashScreen.querySelector('#howtoplay');
+    howToButton.addEventListener('click', function() {
+      removeSplashScreen();
+      createHowToScreen();
     });
   }
 
   function removeSplashScreen() {
     splashScreen.remove();
   }
-
+  function createHowToScreen() {
+    HowTo = buildDom(`
+    <main class = 'mainhowto'>
+        <div class = "howtotext">
+            <h2>How To Play</h2>
+            <p>Keep the falling red square from touching the bottom. You do this by drawing a (currently invisible) line, which will bounce the red square in a random direction, it will also rebound on the walls. You gain points for every bounce and you instantly lose if the red square touches the bottom.</br> Updates will be made to this page.</p>
+        </div>
+        <button id = 'backbutton'>Back</button>
+    </main>
+    `)
+    document.body.appendChild(HowTo);
+    var backButton = HowTo.querySelector('#backbutton');
+    backButton.addEventListener('click', function() {
+        console.log('cringe');
+      removeHowToScreen();
+      createSplashScreen();
+    });
+  }
+function removeHowToScreen() {
+    HowTo.remove();
+}
   // -- game screen
 
   function createGameScreen() {

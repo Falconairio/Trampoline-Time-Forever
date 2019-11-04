@@ -127,3 +127,42 @@ img {
     height: 100px;
     margin-bottom: 50px;
 }
+input {
+    height: 50px;
+}
+label {
+    text-align: center;
+}
+
+#title {
+    background-color: goldenrod, 0.5;
+    text-align: center;
+    border-radius: 10px;
+    border: 2px solid yellow;
+}
+.howtotext {
+    color: white; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid yellow;
+    border-radius: 10px;
+    width: 500px;
+    margin-left: 366px;
+    margin-top: 200px;
+}
+.howtotext h2 {
+    font-size: 40px;
+}
+.howtotext p {
+    line-height: 40px;
+}
+.mainhowto {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.mainhowto button {
+    margin-left: 510px;
+}

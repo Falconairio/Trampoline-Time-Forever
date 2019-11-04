@@ -197,11 +197,10 @@ List of methods that need to be written.
 
 
 ### Git
-URls for the project repo and deploy
 [Go to the Github Repo](https://github.com/Falconairio/Trampoline-Time-Forever)
+
 [Play the Game](https://falconairio.github.io/Trampoline-Time-Forever/)
 
 
 ### Slides
-URls for the project presentation (slides)
 [Go to the Presentation](http://slides.com)
