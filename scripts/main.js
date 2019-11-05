@@ -13,7 +13,10 @@ function main() {
   var AboutScreen;//About the programmer
   var NameScreen;//Screen where you enter your name
   var DifficultyScreen;//Difficulty select screen
-  var name = " ";
+  var LBscreen;//The screen for the leaderboard 
+  var difficulty; //The difficulty for purposes of displaying on the leaderboard
+  var name = " ";//The name for purposes of displaying on the leaderboard 
+  var toLeaderboard = [];
   var HowTo; //How to Play Screen 
 
   // -- splash screen
@@ -141,7 +144,7 @@ function main() {
     <main class = 'mainhowto'>
         <div class = "howtotext">
             <h2>How To Play</h2>
-            <p>Keep the falling red square from touching the bottom. You do this by drawing a white line by clicking and dragging, which will bounce the red square in a random direction, it will also rebound on the walls. You gain points for every bounce and you instantly lose if the red square touches the bottom. Changing the Difficulty will reduce the maximum size of your trampoline.</br> Updates will be made to this page.</p>
+            <p>Keep the falling red square from touching the bottom. You do this by drawing a white line by clicking and dragging, which will bounce the red square in a random direction, it will also rebound on the walls. You gain points for every bounce and you instantly lose if the red square touches the bottom. Changing the Difficulty will reduce the maximum size of your trampoline. Entering your name will make you eligible for leaderboard status</br> Updates will be made to this page.</p>
         </div>
         <button class = 'backbutton'>Back</button>
     </main>
@@ -171,16 +174,19 @@ function createDifficultyScreen() {
 
     var easyButton = DifficultyScreen.querySelector('.easybutton');
     easyButton.addEventListener('click', function() {
+      difficulty = 'Easy';
       removeDifficultyScreen();
         startGame(0);
     });
     var mediumButton = DifficultyScreen.querySelector('.mediumbutton');
     mediumButton.addEventListener('click', function() {
+        difficulty = 'Medium';
         removeDifficultyScreen();
         startGame(1);
     });
     var hardButton = DifficultyScreen.querySelector('.hardbutton');
     hardButton.addEventListener('click', function() {
+        difficulty = 'Hard';
         removeDifficultyScreen();
         startGame(2);
     });
@@ -204,11 +210,19 @@ function removeDifficultyScreen() {
       </div>
       <div>
         <div id = "right-bar">
+        <span class = "playername"></span>
         </div>
       </div>
     </main>
   `);
     document.body.appendChild(gameScreen);
+    let span = document.querySelector('.playername');
+    if(name === " ") {
+        span.innerHTML = "Anonymous <strong class = \"playsession\">playsession</strong>"
+    } else {
+        span.innerHTML = name + '\'s <strong class = \"playsession\">playsession</strong>'
+    }
+    
     return gameScreen;
   }
 
@@ -227,15 +241,21 @@ function removeDifficultyScreen() {
         </div>
         <div class ="goButtons">
             <button>Back to Main Menu</button>
-            <button>See the Leaderboards</button>
+            <button class = "LBbutton">See the Leaderboards</button>
         </div>
     </main>
     `);
 
-    var button = gameOverScreen.querySelector('button');
-    button.addEventListener('click', function() {
+    var Menubutton = gameOverScreen.querySelector('button');
+    Menubutton.addEventListener('click', function() {
         removeGameOverScreen();
         createSplashScreen();
+    });
+
+    var LBbutton = gameOverScreen.querySelector('.LBbutton');
+    LBbutton.addEventListener('click', function() {
+        removeGameOverScreen();
+        createLeaderboard();
     });
 
     var span = gameOverScreen.querySelector('span');
@@ -269,9 +289,26 @@ function removeDifficultyScreen() {
 
   function gameOver(score) {
     removeGameScreen();
+    toLeaderboard.push({name: name, score: score, difficulty: difficulty});
+    var leaderboardAdd = JSON.stringify(toLeaderboard);
+    localStorage.setItem('score',leaderboardAdd);
+    let returnedthing = localStorage.getItem('score');
+    let result = JSON.parse(returnedthing);
     createGameOverScreen(score);
   }
-  // -- initialize Splash screen on initial start
+function createLeaderboard() {
+    LBscreen = buildDom(`
+        <main class = "leaderboardmain">
+            <div class = "leaderboardcontainter">
+                <ol>
+
+                </ol>
+            </div>
+            <button>To Main Menu</button>
+        </main>
+    `)
+    document.body.appendChild(LBscreen);
+}
 
   createSplashScreen();
 }
