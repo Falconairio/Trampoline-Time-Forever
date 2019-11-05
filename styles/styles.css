@@ -25,7 +25,6 @@ footer, header, hgroup, menu, nav, section {
 }
 body {
     line-height: 1;
-    background-image: url(../images/NightSky.png);
     background-size: cover ;
 }
 ol, ul {
@@ -333,4 +332,24 @@ input[type=text]:focus {
 }
 .leaderboardmain button {
     margin-left: 520px;
+}
+.leaderboardcontainter header {
+    text-align: center;
+    font-size: 30px;
+}
+.startandend {
+    background-image: url(../images/NightSky.png);
+}
+.easydifficulty {
+    background-image: url(../images/EasyBackground.jpg);
+}
+.mediumdifficulty {
+
+}
+.harddifficulty {
+    background-image: url(../images/HellBackground.jpg);
+}
+.leaderboardlist li {
+    list-style-type: decimal;
+    text-align: center;
 }

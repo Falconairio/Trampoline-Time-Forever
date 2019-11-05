@@ -38,7 +38,7 @@ function main() {
   `);
     
     document.body.appendChild(splashScreen);
-
+    document.body.classList.add('startandend')
     var aboutButton = splashScreen.querySelector('#aboutcreator');
     aboutButton.addEventListener('click', function() {
         removeSplashScreen();
@@ -176,6 +176,7 @@ function createDifficultyScreen() {
     easyButton.addEventListener('click', function() {
       difficulty = 'Easy';
       removeDifficultyScreen();
+      document.body.classList.add('easydifficulty');
         startGame(0);
     });
     var mediumButton = DifficultyScreen.querySelector('.mediumbutton');
@@ -188,6 +189,7 @@ function createDifficultyScreen() {
     hardButton.addEventListener('click', function() {
         difficulty = 'Hard';
         removeDifficultyScreen();
+        document.body.classList.add('harddifficulty');
         startGame(2);
     });
 }
@@ -197,6 +199,7 @@ function removeDifficultyScreen() {
 }
 
   function createGameScreen() {
+    document.body.classList.remove('startandend')
     var gameScreen = buildDom(`
     <main class="game-container">
       <div>
@@ -227,6 +230,9 @@ function removeDifficultyScreen() {
   }
 
   function removeGameScreen() {
+    document.body.classList.remove('easydifficulty');
+    document.body.classList.remove('mediumdifficulty');
+    document.body.classList.remove('harddifficulty');
     game.removeGameScreen();
   }
 
@@ -245,7 +251,7 @@ function removeDifficultyScreen() {
         </div>
     </main>
     `);
-
+    document.body.classList.add('startandend');
     var Menubutton = gameOverScreen.querySelector('button');
     Menubutton.addEventListener('click', function() {
         removeGameOverScreen();
@@ -300,14 +306,33 @@ function createLeaderboard() {
     LBscreen = buildDom(`
         <main class = "leaderboardmain">
             <div class = "leaderboardcontainter">
-                <ol>
-
+                <header>Top Scores</header>
+                <ol class = "leaderboardlist">
+                    <li>________</li>
+                    <li>________</li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
                 </ol>
             </div>
             <button>To Main Menu</button>
         </main>
     `)
     document.body.appendChild(LBscreen);
+
+    let menbutton = LBscreen.querySelector('button');
+    menbutton.addEventListener('click',function () {
+        removeLeaderboard();
+        createSplashScreen();
+    })
+}
+function removeLeaderboard() {
+    LBscreen.remove();
 }
 
   createSplashScreen();

@@ -3,6 +3,7 @@
 function Trampoline(canvas, mDownX, mDownY, mUpX, mUpY,difficulty) {
   this.canvas = canvas;
   this.ctx = this.canvas.getContext('2d');
+  this.difficulty = difficulty;
     if(difficulty === 0) {
         if(mDownX > mUpX) {
             this.sizewidth = mDownX - mUpX; 
@@ -80,14 +81,22 @@ function Trampoline(canvas, mDownX, mDownY, mUpX, mUpY,difficulty) {
         }
     }
 }
-
-
-
-
 Trampoline.prototype.draw = function() {
-  this.ctx.fillStyle = "white";
+  if(this.difficulty === 0) {
+    this.ctx.fillStyle = "lime";
+  } else if(this.difficulty === 1) {
+
+  } else{
+      this.ctx.fillStyle = "white";
+  }
   this.ctx.fillRect(this.x,this.y,this.sizewidth,this.sizeheight);
 };
 Trampoline.prototype.fill = function() {
-    this.ctx.fillStyle = "white";
+    if(this.difficulty === 0) {
+        this.ctx.fillStyle = "lime";
+      } else if(this.difficulty === 1) {
+    
+      } else{
+          this.ctx.fillStyle = "white";
+      }
 }
