@@ -57,10 +57,7 @@ Game.prototype.startLoop = function() {
   var loop = function() {
     //console.log(this.mouseUpX + " " + this.mouseUpY);
     this.trampoline = new Trampoline(this.canvas, this.mouseDownX,this.mouseDownY,this.mouseUpX,this.mouseUpY)
-    if(this.mouseDownX != null && this.mouseDownY != null && this.mouseUpX != null && this.mouseUpY != null) {
-        this.trampoline.draw();
-        this.trampoline.fill();
-    }
+    
     // 2. Check if player had hit any enemy (check all enemies)
     this.checkCollisions();
     // 5. Update the characters position 
@@ -71,6 +68,10 @@ Game.prototype.startLoop = function() {
     // 3. UPDATE THE CANVAS
     // Draw the Trampoline in the same position 
     this.character.draw();
+    if(this.mouseDownX != null && this.mouseDownY != null && this.mouseUpX != null && this.mouseUpY != null) {
+        this.trampoline.draw();
+        this.trampoline.fill();
+    }
     
     // Draw the character continuing the falling animation 
     this.character.handleScreenCollision();

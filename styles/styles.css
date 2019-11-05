@@ -116,8 +116,6 @@ strong {
 #gameovermain {
     display: flex;
     flex-direction: column;
-    align-items: center;   
-    justify-content: center;
     margin-top: 100px;
     color: white;
     font-size: 50px;
@@ -239,4 +237,44 @@ input[type=text]:focus {
 }
 .goButtons button {
     margin-right: 20px;
+}
+.submitandbutton {
+    display:flex;
+    flex-direction: row;
+    align-items: baseline;
+}
+.name {
+    margin-bottom: -50px;
+}
+.gameovertext {
+    color: white; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 500px;
+    margin-left: 366px;
+    margin-top: 50px;
+    text-align: center;
+}
+.gameovertext img {
+    border: 2px solid yellow;
+    border-radius: 10px;
+    
+}
+.namemain {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+.namemain span {
+    font-size: 40px;
+    margin-bottom: -30px;
+    margin-left:-50px;
+}
+.failure {
+    color:red;
+}
+.success {
+    color:green;
 }

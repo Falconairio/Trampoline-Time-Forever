@@ -24,8 +24,8 @@ function Trampoline(canvas, mDownX, mDownY, mUpX, mUpY) {
         this.y = mUpY;
     } else {
         this.sizeheight = mUpY - mDownY;
-        if(this.sizeheight > 50) {
-            this.sizeheight = 50;
+        if(this.sizeheight > 30) {
+            this.sizeheight = 30;
         }
         this.y = mDownY;
     }

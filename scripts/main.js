@@ -93,20 +93,35 @@ function main() {
     <main class = 'namemain'>
         <div id = "nameform">
             <h2>Enter your name to be put on the Leaderboard</h2>
+            <div class = "submitandbutton">
             <form>
-                <input type = "text">
+                <input type = "text" class="name">
                 <button id = "namesubmit">Submit Name</button>
             </form>
+            </div>
         </div>
+        <span></span>
         <button class = 'backbutton'>Back</button>
     </main>
     `)
     document.body.appendChild(NameScreen);
-    var submitValue = NameScreen.getElementsByTagName('input').value
     var submitButton = NameScreen.querySelector('#namesubmit');
-    submitButton.addEventListener('click', function() {
-        name = submitValue;
-        console.log(name);
+    submitButton.addEventListener('click', function(event) {
+        event.preventDefault();
+        var submitValue = NameScreen.querySelector('.name').value;
+        var success = NameScreen.querySelector('span'); 
+        if(submitValue === "") {
+            success.classList.remove('success');
+            success.innerHTML = "failure";
+            success.classList.add('failure')
+        } 
+        if(submitValue != "") {
+            success.classList.remove('falure');
+            success.innerHTML = "success";
+            success.classList.add('success')
+            name = submitValue;
+            console.log(name);
+        }
     })
     var backButton = NameScreen.querySelector('.backbutton');
     backButton.addEventListener('click', function() {
@@ -124,7 +139,7 @@ function main() {
     <main class = 'mainhowto'>
         <div class = "howtotext">
             <h2>How To Play</h2>
-            <p>Keep the falling red square from touching the bottom. You do this by drawing a (currently invisible) line, which will bounce the red square in a random direction, it will also rebound on the walls. You gain points for every bounce and you instantly lose if the red square touches the bottom.</br> Updates will be made to this page.</p>
+            <p>Keep the falling red square from touching the bottom. You do this by drawing a white line by clicking and dragging, which will bounce the red square in a random direction, it will also rebound on the walls. You gain points for every bounce and you instantly lose if the red square touches the bottom.</br> Updates will be made to this page.</p>
         </div>
         <button class = 'backbutton'>Back</button>
     </main>
@@ -132,7 +147,6 @@ function main() {
     document.body.appendChild(HowTo);
     var backButton = HowTo.querySelector('.backbutton');
     backButton.addEventListener('click', function() {
-        console.log('cringe');
       removeHowToScreen();
       createSplashScreen();
     });
@@ -140,8 +154,6 @@ function main() {
 function removeHowToScreen() {
     HowTo.remove();
 }
-  // -- game screen
-
   function createGameScreen() {
     var gameScreen = buildDom(`
     <main class="game-container">
@@ -173,8 +185,10 @@ function removeHowToScreen() {
   function createGameOverScreen(score) {
     gameOverScreen = buildDom(`
       <main id = "gameovermain">
-        <h1>Game Over</h1>
-        <p>Your score: <span></span></p>
+        <div class = "gameovertext">
+            <img src = "../images/GameOver.png">
+            <p>Your score: <span></span></p>
+        </div>
         <div class ="goButtons">
             <button>Back to Main Menu</button>
             <button>See the Leaderboards</button>
