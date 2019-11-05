@@ -12,6 +12,7 @@ function main() {
   var gameOverScreen; // Game Over Screen
   var AboutScreen;//About the programmer
   var NameScreen;//Screen where you enter your name
+  var DifficultyScreen;//Difficulty select screen
   var name = " ";
   var HowTo; //How to Play Screen 
 
@@ -55,7 +56,8 @@ function main() {
 
     var startButton = splashScreen.querySelector('#startbutton');
     startButton.addEventListener('click', function() {
-      startGame();
+      removeSplashScreen();
+      createDifficultyScreen();
     });
   }
 
@@ -139,7 +141,7 @@ function main() {
     <main class = 'mainhowto'>
         <div class = "howtotext">
             <h2>How To Play</h2>
-            <p>Keep the falling red square from touching the bottom. You do this by drawing a white line by clicking and dragging, which will bounce the red square in a random direction, it will also rebound on the walls. You gain points for every bounce and you instantly lose if the red square touches the bottom.</br> Updates will be made to this page.</p>
+            <p>Keep the falling red square from touching the bottom. You do this by drawing a white line by clicking and dragging, which will bounce the red square in a random direction, it will also rebound on the walls. You gain points for every bounce and you instantly lose if the red square touches the bottom. Changing the Difficulty will reduce the maximum size of your trampoline.</br> Updates will be made to this page.</p>
         </div>
         <button class = 'backbutton'>Back</button>
     </main>
@@ -154,6 +156,40 @@ function main() {
 function removeHowToScreen() {
     HowTo.remove();
 }
+
+function createDifficultyScreen() {
+    DifficultyScreen = buildDom(`
+        <main class = "difficultycontainer">
+            <div class ="difficultybuttons">
+                <button class = "easybutton">Easy</button>
+                <button class = "mediumbutton">Medium</button>
+                <button class = "hardbutton">Hard</button>
+            </div>
+        </main>
+    `)
+    document.body.appendChild(DifficultyScreen);
+
+    var easyButton = DifficultyScreen.querySelector('.easybutton');
+    easyButton.addEventListener('click', function() {
+      removeDifficultyScreen();
+        startGame(0);
+    });
+    var mediumButton = DifficultyScreen.querySelector('.mediumbutton');
+    mediumButton.addEventListener('click', function() {
+        removeDifficultyScreen();
+        startGame(1);
+    });
+    var hardButton = DifficultyScreen.querySelector('.hardbutton');
+    hardButton.addEventListener('click', function() {
+        removeDifficultyScreen();
+        startGame(2);
+    });
+}
+
+function removeDifficultyScreen() {
+    DifficultyScreen.remove();
+}
+
   function createGameScreen() {
     var gameScreen = buildDom(`
     <main class="game-container">
@@ -216,12 +252,12 @@ function removeHowToScreen() {
 
   // -- Setting the game state
 
-  function startGame() {
-    removeSplashScreen();
+  function startGame(difficulty) {
+    removeDifficultyScreen();
     // later we need to add clearing of the gameOverScreen
     removeGameOverScreen();
 
-    game = new Game();
+    game = new Game(difficulty);
     game.gameScreen = createGameScreen();
 
     game.start();

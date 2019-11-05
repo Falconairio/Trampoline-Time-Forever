@@ -1,6 +1,6 @@
 'use strict';
 
-function Game() {
+function Game(difficulty) {
   this.canvas = null;
   this.ctx = null;
   this.character = null;
@@ -12,6 +12,7 @@ function Game() {
   this.mouseDownY = null;
   this.mouseUpX = null;
   this.mouseUpY = null;
+  this.difficulty = difficulty;
 }
 
 // Append canvas to the DOM, create a Player and start the Canvas loop
@@ -56,7 +57,7 @@ Game.prototype.start = function() {
 Game.prototype.startLoop = function() {
   var loop = function() {
     //console.log(this.mouseUpX + " " + this.mouseUpY);
-    this.trampoline = new Trampoline(this.canvas, this.mouseDownX,this.mouseDownY,this.mouseUpX,this.mouseUpY)
+    this.trampoline = new Trampoline(this.canvas, this.mouseDownX,this.mouseDownY,this.mouseUpX,this.mouseUpY,this.difficulty)
     
     // 2. Check if player had hit any enemy (check all enemies)
     this.checkCollisions();

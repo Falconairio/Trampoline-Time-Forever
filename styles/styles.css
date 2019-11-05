@@ -151,7 +151,7 @@ label {
     border-radius: 10px;
     width: 500px;
     margin-left: 366px;
-    margin-top: 200px;
+    margin-top: 150px;
 }
 .howtotext p {
     line-height: 40px;
@@ -277,4 +277,29 @@ input[type=text]:focus {
 }
 .success {
     color:green;
+}
+.difficultycontainer {
+    color: white; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid yellow;
+    border-radius: 10px;
+    width: 300px;
+    margin-left: 470px;
+    margin-top: 100px;
+}
+.difficultybuttons {
+    margin-left: 50px;
+    margin-bottom:40px;
+}
+.easybutton {
+    background-color: green;
+}
+.mediumbutton {
+    background-color: gold;
+}
+.hardbutton {
+    background-color: red;
 }
