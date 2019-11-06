@@ -26,8 +26,8 @@ function main() {
     splashScreen = buildDom(`
     <main class = "bigwords">
     <div id = "title">
-      <img src = "../images/TrampolineTime.png">
-      <img src = "../images/Forever.png" alt = "bruh">
+      <img src = "./images/TrampolineTime.png">
+      <img src = "./images/Forever.png" alt = "bruh">
     </div>
     <div class = bottomoptions>
       <button id = "aboutcreator">About the programmer</button>
