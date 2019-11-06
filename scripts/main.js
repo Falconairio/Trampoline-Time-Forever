@@ -20,8 +20,6 @@ function main() {
   var toLeaderboard = [];
   var HowTo; //How to Play Screen 
 
-  // -- splash screen
-
   function createSplashScreen() {
     splashScreen = buildDom(`
     <main class = "bigwords">
@@ -77,7 +75,7 @@ function main() {
                 <h2>About the Programmer</h2>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique deserunt quas itaque, eligendi dolore, saepe quae doloribus quaerat odio, placeat adipisci quisquam consectetur voluptates nam accusamus aperiam hic alias provident? Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique deserunt quas itaque, eligendi dolore, saepe quae doloribus quaerat odio, placeat adipisci quisquam consectetur voluptates nam accusamus aperiam hic alias provident?</p>
             </div>
-            <img src = "../images/newMan.png">
+            <img src = "./images/newMan.png">
         </div>
             <button class = 'backbutton'>Back</button>
         </main>
@@ -250,7 +248,7 @@ function removeDifficultyScreen() {
     gameOverScreen = buildDom(`
       <main id = "gameovermain">
         <div class = "gameovertext">
-            <img src = "../images/GameOver.png">
+            <img src = "./images/GameOver.png">
             <p>Your score: <span></span></p>
         </div>
         <div class ="goButtons">
