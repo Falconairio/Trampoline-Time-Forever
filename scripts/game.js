@@ -107,8 +107,7 @@ Game.prototype.passGameOverCallback = function(callback) {
   this.onGameOverCallback = callback;
 };
 
-Game.prototype.gameOver = function() {
-  // flag `gameIsOver = true` stops the loop
+Game.prototype.gameOver = function() {  
   this.gameIsOver = true;
   // Call the gameOver function from `main` to show the Game Over Screen
   this.onGameOverCallback();
@@ -121,3 +120,4 @@ Game.prototype.removeGameScreen = function() {
 Game.prototype.updateGameStats = function() {
   this.scoreElement.innerHTML = this.score;
 };
+

@@ -16,6 +16,7 @@ function main() {
   var LBscreen;//The screen for the leaderboard 
   var difficulty; //The difficulty for purposes of displaying on the leaderboard
   var name = " ";//The name for purposes of displaying on the leaderboard 
+  var scorePlayer; //The score for the game session
   var toLeaderboard = [];
   var HowTo; //How to Play Screen 
 
@@ -120,6 +121,12 @@ function main() {
             success.innerHTML = "failure";
             success.classList.add('failure')
         } 
+        if(submitValue === 'bruh' || submitValue === 'BRUH' || submitValue === 'Bruh') {
+            removeNameScreen();
+            document.body.classList.remove('startandend');
+            document.body.classList.add('secretdifficulty');
+            startGame(1);
+        }
         if(submitValue != "") {
             success.classList.remove('falure');
             success.innerHTML = "success";
@@ -144,7 +151,7 @@ function main() {
     <main class = 'mainhowto'>
         <div class = "howtotext">
             <h2>How To Play</h2>
-            <p>Keep the falling red square from touching the bottom. You do this by drawing a white line by clicking and dragging, which will bounce the red square in a random direction, it will also rebound on the walls. You gain points for every bounce and you instantly lose if the red square touches the bottom. Changing the Difficulty will reduce the maximum size of your trampoline. Entering your name will make you eligible for leaderboard status</br> Updates will be made to this page.</p>
+            <p>Keep the falling red square from touching the bottom. You do this by drawing a white line by clicking and dragging, which will bounce the red square in a random direction, it will also rebound on the walls. You gain points for every bounce and you instantly lose if the red square touches the bottom. Changing the Difficulty will reduce the maximum size of your trampoline. Entering your name will make you eligible for leaderboard status. Entering certain names will trigger secrets.</br> Updates will be made to this page.</p>
         </div>
         <button class = 'backbutton'>Back</button>
     </main>
@@ -176,7 +183,7 @@ function createDifficultyScreen() {
     easyButton.addEventListener('click', function() {
       difficulty = 'Easy';
       removeDifficultyScreen();
-      document.body.classList.add('easydifficulty');
+      //document.body.classList.add('startandend');
         startGame(0);
     });
     var mediumButton = DifficultyScreen.querySelector('.mediumbutton');
@@ -189,7 +196,7 @@ function createDifficultyScreen() {
     hardButton.addEventListener('click', function() {
         difficulty = 'Hard';
         removeDifficultyScreen();
-        document.body.classList.add('harddifficulty');
+        //document.body.classList.add('startandend');
         startGame(2);
     });
 }
@@ -199,7 +206,7 @@ function removeDifficultyScreen() {
 }
 
   function createGameScreen() {
-    document.body.classList.remove('startandend')
+
     var gameScreen = buildDom(`
     <main class="game-container">
       <div>
@@ -239,6 +246,9 @@ function removeDifficultyScreen() {
   // -- game over screen
 
   function createGameOverScreen(score) {
+    if(difficulty === 4) {
+        document.body.classList.remove('secretdifficulty');
+    }
     gameOverScreen = buildDom(`
       <main id = "gameovermain">
         <div class = "gameovertext">
@@ -263,10 +273,9 @@ function removeDifficultyScreen() {
         removeGameOverScreen();
         createLeaderboard();
     });
-
     var span = gameOverScreen.querySelector('span');
     span.innerText = score;
-
+    scorePlayer = score;
     document.body.appendChild(gameOverScreen);
   }
 
@@ -279,8 +288,12 @@ function removeDifficultyScreen() {
   // -- Setting the game state
 
   function startGame(difficulty) {
-    removeDifficultyScreen();
-    // later we need to add clearing of the gameOverScreen
+    if(NameScreen) {
+        removeNameScreen();
+    }
+    if(DifficultyScreen){
+        removeDifficultyScreen();
+    }
     removeGameOverScreen();
 
     game = new Game(difficulty);
@@ -290,37 +303,85 @@ function removeDifficultyScreen() {
     // End the game
     game.passGameOverCallback(function() {
       gameOver(game.score);
+      updateScore(game.score);
     });
   }
 
   function gameOver(score) {
     removeGameScreen();
-    toLeaderboard.push({name: name, score: score, difficulty: difficulty});
-    var leaderboardAdd = JSON.stringify(toLeaderboard);
-    localStorage.setItem('score',leaderboardAdd);
-    let returnedthing = localStorage.getItem('score');
-    let result = JSON.parse(returnedthing);
     createGameOverScreen(score);
   }
+  function updateScore() {
+    var lastPlayer = {name: name, score: scorePlayer, difficulty: difficulty};
+    var scoreString = localStorage.getItem('score');
+    if(name = " "){
+    } else {
+    if(!scoreString) {
+        var scoreArray = []
+        scoreArray.push(lastPlayer);
+        var leaderboardString = JSON.stringify(scoreArray);
+        localStorage.setItem('score',leaderboardString);
+    } else if (scoreString) { 
+        var scoreArray = JSON.parse(scoreString);
+        scoreArray.push(lastPlayer);
+        var leaderboardString = JSON.stringify(scoreArray);
+        localStorage.setItem('score',leaderboardString);
+        console.log("here is the local storgage " + localStorage);
+        }
+    }
+}
 function createLeaderboard() {
     LBscreen = buildDom(`
         <main class = "leaderboardmain">
             <div class = "leaderboardcontainter">
-                <header>Top Scores</header>
-                <ol class = "leaderboardlist">
-                    <li>________</li>
-                    <li>________</li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                </ol>
+                <div>
+                    <header>Top Players</header>
+                    <ol class = "leaderboardlist">
+                        <li>________</li>
+                        <li>________</li>
+                        <li>________</li>
+                        <li>________</li>
+                        <li>________</li>
+                        <li>________</li>
+                        <li>________</li>
+                        <li>________</li>
+                        <li>________</li>
+                        <li>________</li>
+                    </ol>
+                </div>
+                <div>
+                <ol class = "secondleaderboardlist">
+                    <header>Score</header>
+                        <li>________</li>
+                        <li>________</li>
+                        <li>________</li>
+                        <li>________</li>
+                        <li>________</li>
+                        <li>________</li>
+                        <li>________</li>
+                        <li>________</li>
+                        <li>________</li>
+                        <li>________</li>
+                    </ol>
+                </div>
+                <div>
+                <ol class = "secondleaderboardlist">
+                    <header>Difficulty</header>
+                        <li>________</li>
+                        <li>________</li>
+                        <li>________</li>
+                        <li>________</li>
+                        <li>________</li>
+                        <li>________</li>
+                        <li>________</li>
+                        <li>________</li>
+                        <li>________</li>
+                        <li>________</li>
+                    </ol>
+                </div>
             </div>
             <button>To Main Menu</button>
+            <button>Back</button>
         </main>
     `)
     document.body.appendChild(LBscreen);
@@ -330,6 +391,8 @@ function createLeaderboard() {
         removeLeaderboard();
         createSplashScreen();
     })
+
+    
 }
 function removeLeaderboard() {
     LBscreen.remove();
@@ -339,4 +402,3 @@ function removeLeaderboard() {
 }
 
 window.addEventListener('load', main);
-
