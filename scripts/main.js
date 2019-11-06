@@ -302,7 +302,7 @@ function removeDifficultyScreen() {
     // End the game
     game.passGameOverCallback(function() {
       gameOver(game.score);
-      updateScore(game.score);
+      updateScore();
     });
   }
 
