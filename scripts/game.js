@@ -58,7 +58,9 @@ Game.prototype.startLoop = function() {
   var loop = function() {
     //console.log(this.mouseUpX + " " + this.mouseUpY);
     this.trampoline = new Trampoline(this.canvas, this.mouseDownX,this.mouseDownY,this.mouseUpX,this.mouseUpY,this.difficulty)
-    
+    if(this.difficulty === 3) {
+        this.trampoline.draw();
+    }
     // 2. Check if player had hit any enemy (check all enemies)
     this.checkCollisions();
     // 5. Update the characters position 
@@ -69,7 +71,7 @@ Game.prototype.startLoop = function() {
     // 3. UPDATE THE CANVAS
     // Draw the Trampoline in the same position 
     this.character.draw();
-    if(this.mouseDownX != null && this.mouseDownY != null && this.mouseUpX != null && this.mouseUpY != null) {
+    if(this.mouseDownX != null && this.mouseDownY != null && this.mouseUpX != null && this.mouseUpY != null && this.difficulty != 3) {
         this.trampoline.draw();
         this.trampoline.fill();
     }

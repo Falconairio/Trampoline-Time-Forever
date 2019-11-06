@@ -125,7 +125,8 @@ function main() {
             removeNameScreen();
             document.body.classList.remove('startandend');
             document.body.classList.add('secretdifficulty');
-            startGame(1);
+            difficulty = "Secret"
+            startGame(3);
         }
         if(submitValue != "") {
             success.classList.remove('falure');
@@ -246,9 +247,6 @@ function removeDifficultyScreen() {
   // -- game over screen
 
   function createGameOverScreen(score) {
-    if(difficulty === 4) {
-        document.body.classList.remove('secretdifficulty');
-    }
     gameOverScreen = buildDom(`
       <main id = "gameovermain">
         <div class = "gameovertext">
@@ -262,6 +260,7 @@ function removeDifficultyScreen() {
     </main>
     `);
     document.body.classList.add('startandend');
+    document.body.classList.remove('secretdifficulty');
     var Menubutton = gameOverScreen.querySelector('button');
     Menubutton.addEventListener('click', function() {
         removeGameOverScreen();
@@ -314,8 +313,7 @@ function removeDifficultyScreen() {
   function updateScore() {
     var lastPlayer = {name: name, score: scorePlayer, difficulty: difficulty};
     var scoreString = localStorage.getItem('score');
-    if(name = " "){
-    } else {
+    
     if(!scoreString) {
         var scoreArray = []
         scoreArray.push(lastPlayer);
@@ -326,8 +324,9 @@ function removeDifficultyScreen() {
         scoreArray.push(lastPlayer);
         var leaderboardString = JSON.stringify(scoreArray);
         localStorage.setItem('score',leaderboardString);
-        console.log("here is the local storgage " + localStorage);
-        }
+        var test = localStorage.getItem('score');
+        var testagain = JSON.parse(test);
+        toLeaderboard = testagain;
     }
 }
 function createLeaderboard() {
@@ -335,8 +334,8 @@ function createLeaderboard() {
         <main class = "leaderboardmain">
             <div class = "leaderboardcontainter">
                 <div>
-                    <header>Top Players</header>
-                    <ol class = "leaderboardlist">
+                    <ol class = "leaderboardlist" id = "name">
+                        <header>Top Players</header>
                         <li>________</li>
                         <li>________</li>
                         <li>________</li>
@@ -350,7 +349,7 @@ function createLeaderboard() {
                     </ol>
                 </div>
                 <div>
-                <ol class = "secondleaderboardlist">
+                <ol class = "secondleaderboardlist" id = "score">
                     <header>Score</header>
                         <li>________</li>
                         <li>________</li>
@@ -365,7 +364,7 @@ function createLeaderboard() {
                     </ol>
                 </div>
                 <div>
-                <ol class = "secondleaderboardlist">
+                <ol class = "secondleaderboardlist" id = "difficulty">
                     <header>Difficulty</header>
                         <li>________</li>
                         <li>________</li>
@@ -380,24 +379,63 @@ function createLeaderboard() {
                     </ol>
                 </div>
             </div>
-            <button>To Main Menu</button>
-            <button>Back</button>
+            <div class = "leaderboardbuttons">
+                <button>To Main Menu</button>
+                <button class = 'backbutn'>Back</button>
+            </div>
         </main>
     `)
     document.body.appendChild(LBscreen);
 
+    setLeaderboard(toLeaderboard);
     let menbutton = LBscreen.querySelector('button');
     menbutton.addEventListener('click',function () {
         removeLeaderboard();
         createSplashScreen();
     })
-
-    
+    let leadbackbutton = LBscreen.querySelector('.backbutn');
+    leadbackbutton.addEventListener('click', function () {
+        removeLeaderboard(); 
+        createGameOverScreen(scorePlayer);
+    })
 }
 function removeLeaderboard() {
     LBscreen.remove();
 }
-
+function setLeaderboard(array) {
+    array.sort(compare);
+    function compare(a,b) {
+        if (a.score > b.score){
+          return -1;
+        }
+        if (a.score < b.score){
+          return 1;
+        }
+        return 0;
+      }
+    var nameList = document.querySelector('#name');
+    var scoreList = document.querySelector('#score');
+    var difficultyList = document.querySelector('#difficulty');
+    console.log(difficultyList);
+        let nam = nameList.querySelectorAll('li');
+        nam.forEach(function(element,index) {
+            if(array[index]){
+                element.innerHTML = array[index].name;
+            }
+        })
+        let scr = scoreList.querySelectorAll('li');
+        scr.forEach(function(element,index) {
+            if(array[index]){
+                element.innerHTML = array[index].score;
+            }
+        })
+        let dfc= difficultyList.querySelectorAll('li');
+        dfc.forEach(function(element,index) {
+            if(array[index]){
+                element.innerHTML = array[index].difficulty;
+            }
+        })
+}
   createSplashScreen();
 }
 

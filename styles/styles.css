@@ -160,7 +160,7 @@ label {
     border-radius: 10px;
     width: 500px;
     margin-left: 366px;
-    margin-top: 150px;
+    margin-top: 70px;
 }
 .howtotext p {
     line-height: 40px;
@@ -334,9 +334,6 @@ input[type=text]:focus {
     padding-bottom: 20px;
     padding-top: 20px;
 }
-.leaderboardmain button {
-    margin-left: 520px;
-}
 .leaderboardcontainter header {
     text-align: center;
     font-size: 30px;
@@ -370,4 +367,12 @@ input[type=text]:focus {
 }
 .secondleaderboardlist header {
     margin-left: 50px;
+}
+.leaderboardbuttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+.backbutn {
+    margin-left: -520px;
 }

@@ -45,7 +45,7 @@ function Trampoline(canvas, mDownX, mDownY, mUpX, mUpY,difficulty) {
             }
             this.y = mDownY;
         }
-    } else {
+    } else if (difficulty === 2){
         if(mDownX > mUpX) {
             this.sizewidth = mDownX - mUpX; 
             if(this.sizewidth > 100) {
@@ -72,24 +72,45 @@ function Trampoline(canvas, mDownX, mDownY, mUpX, mUpY,difficulty) {
             }
             this.y = mDownY;
         }
+    } else {
+        if(mDownX > mUpX) {
+            this.sizewidth = mDownX - mUpX; 
+            if(this.sizewidth > 50) {
+                this.sizewidth = 50;
+            }
+            this.x = mUpX - 50;
+        } else {
+            this.sizewidth = mUpX - mDownX;
+            if(this.sizewidth > 50) {
+                this.sizewidth = 50;
+            }
+            this.x = mDownX - 50 ;
+        }
+        if(mDownY > mUpY) {
+            this.sizeheight = mDownY - mUpY;
+            if(this.sizeheight > 10) {
+                this.sizeheight = 10;
+            }
+            this.y = mUpY;
+        } else {
+            this.sizeheight = mUpY - mDownY;
+            if(this.sizeheight > 10) {
+                this.sizeheight = 10;
+            }
+            this.y = mDownY;
+        }
     }
 }
 Trampoline.prototype.draw = function() {
   if(this.difficulty === 0) {
     this.ctx.fillStyle = "lime";
   } else if(this.difficulty === 1) {
-
-  } else{
-      this.ctx.fillStyle = "white";
-  }
+    this.ctx.fillStyle = "gold"
+  } else if(this.difficulty === 2){
+      this.ctx.fillStyle = "red";
+  } 
   this.ctx.fillRect(this.x,this.y,this.sizewidth,this.sizeheight);
 };
 Trampoline.prototype.fill = function() {
-    if(this.difficulty === 0) {
-        this.ctx.fillStyle = "white";
-      } else if(this.difficulty === 1) {
     
-      } else{
-          this.ctx.fillStyle = "white";
-      }
 }
