@@ -19,6 +19,7 @@ function main() {
   var scorePlayer; //The score for the game session
   var toLeaderboard = [];
   var HowTo; //How to Play Screen 
+  var bgm = document.getElementById('bgm');
 
   function createSplashScreen() {
     splashScreen = buildDom(`
@@ -150,7 +151,7 @@ function main() {
     <main class = 'mainhowto'>
         <div class = "howtotext">
             <h2>How To Play</h2>
-            <p>Keep the falling red square from touching the bottom. You do this by drawing a white line by clicking and dragging, which will bounce the red square in a random direction, it will also rebound on the walls. You gain points for every bounce and you instantly lose if the red square touches the bottom. Changing the Difficulty will reduce the maximum size of your trampoline. Entering your name will make you eligible for leaderboard status. Entering certain names will trigger secrets.</br> Updates will be made to this page.</p>
+            <p>Keep the falling red square from touching the bottom. You do this by drawing a white line by clicking and dragging, which will bounce the red square in a random direction, you can bounce the object on either side of the trampoline, and it will also rebound on the walls. You gain points for every bounce and you instantly lose if the red square touches the bottom. Changing the Difficulty will reduce the maximum size of your trampoline. Entering your name will make you eligible for leaderboard status. Entering certain names will trigger secrets.</br> Updates will be made to this page.</p>
         </div>
         <button class = 'backbutton'>Back</button>
     </main>
@@ -435,6 +436,7 @@ function setLeaderboard(array) {
         })
 }
   createSplashScreen();
+  bgm.play();
 }
 
 window.addEventListener('load', main);

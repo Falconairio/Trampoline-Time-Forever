@@ -48,7 +48,7 @@ function Character(canvas, speed) {
     
     var crossTop = charTop <= trampBottom && charTop >= trampTop;
   
-    if ((crossLeft || crossRight) && (crossTop || crossBottom)) {
+    if ((crossLeft || crossRight) && (crossBottom)) {
         let randomNum = Math.random();
         if(randomNum > 0.66) {
             this.xspeed = 1;
@@ -59,6 +59,19 @@ function Character(canvas, speed) {
         } else {
             this.xspeed = -1;
             this.yspeed = -1;
+        }
+      return true;
+    } else if((crossLeft || crossRight) && crossTop) {
+        let randomNum = Math.random();
+        if(randomNum > 0.66) {
+            this.xspeed = 1;
+            this.yspeed = 1;
+        } else if(randomNum > 0.33) {
+            this.xspeed = 0;
+            this.yspeed = 1;
+        } else {
+            this.xspeed = -1;
+            this.yspeed = 1;
         }
       return true;
     }

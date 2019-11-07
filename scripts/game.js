@@ -97,7 +97,16 @@ Game.prototype.checkCollisions = function() {
     this.mouseDownY = null; 
     this.mouseUpX = null;
     this.mouseUpY = null;
-    this.score +=1;
+    if(this.difficulty === 0) {
+        this.score +=1;
+    } else if(this.difficulty === 1) {
+        this.score += 2;
+    } else if(this.difficulty === 2) {
+        this.score += 3;
+    } else {
+        let ranScore = Math.floor(Math.random() * 10);
+        this.score += ranScore;
+    }
     
   }
   if(this.character.isInsideScreen()) {
