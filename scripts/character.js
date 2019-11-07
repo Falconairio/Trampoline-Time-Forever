@@ -10,6 +10,7 @@ function Character(canvas, speed) {
     this.speed = speed;
     this.xspeed = 0;
     this.yspeed = 1;
+    this.soundeffect = document.getElementById('bounceSound');
   }
   Character.prototype.draw = function() {
   
@@ -79,9 +80,33 @@ function Character(canvas, speed) {
   };
   Character.prototype.handleScreenCollision = function() {  
     var screenTop = 0; 
-    var screenLeft = 50;
-    var screenRight = this.canvas.width;
-    if(this.y < screenTop) this.yspeed = 1;
-    else if(this.x >= screenRight) this.xspeed = -1;
-    else if(this.x <= screenLeft) this.xspeed = 1;
+    var screenLeft = 15;
+    var screenRight = this.canvas.width - 25;
+    if(this.y < screenTop) {
+        this.yspeed = 1;
+        var soundFlag = true;
+        if(soundFlag) {
+            this.soundeffect.pause();
+            this.soundeffect.currentTime = 0;
+            this.soundeffect.play();
+        }
+    }
+    else if(this.x >= screenRight) {
+        this.xspeed = -1;
+        var soundFlag = true;
+        if(soundFlag) {
+            this.soundeffect.pause();
+            this.soundeffect.currentTime = 0;
+            this.soundeffect.play();
+        }
+    }
+    else if(this.x <= screenLeft) { 
+        this.xspeed = 1;
+        var soundFlag = true;
+        if(soundFlag) {
+            this.soundeffect.pause();
+            this.soundeffect.currentTime = 0;
+            this.soundeffect.play();
+        }
+    }
   };

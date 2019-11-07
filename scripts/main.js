@@ -15,7 +15,7 @@ function main() {
   var DifficultyScreen;//Difficulty select screen
   var LBscreen;//The screen for the leaderboard 
   var difficulty; //The difficulty for purposes of displaying on the leaderboard
-  var name = " ";//The name for purposes of displaying on the leaderboard 
+  var name = "Anonymous";//The name for purposes of displaying on the leaderboard 
   var scorePlayer; //The score for the game session
   var toLeaderboard = [];
   var HowTo; //How to Play Screen 
@@ -401,12 +401,16 @@ function createLeaderboard() {
         removeLeaderboard(); 
         createGameOverScreen(scorePlayer);
     })
+    let clearbutton = LBscreen.querySelector('.clear');
+    clearbutton.addEventListener('click', function() {
+        localStorage.clear();
+        setLeaderboard(toLeaderboard);
+    })
 }
 function removeLeaderboard() {
     LBscreen.remove();
 }
 function setLeaderboard(array) {
-    array.sort(compare);
     function compare(a,b) {
         if (a.score > b.score){
           return -1;
@@ -414,12 +418,12 @@ function setLeaderboard(array) {
         if (a.score < b.score){
           return 1;
         }
-        return 0;
       }
+      array.sort(compare);
+      console.log(toLeaderboard);
     var nameList = document.querySelector('#name');
     var scoreList = document.querySelector('#score');
     var difficultyList = document.querySelector('#difficulty');
-    console.log(difficultyList);
         let nam = nameList.querySelectorAll('li');
         nam.forEach(function(element,index) {
             if(array[index]){
