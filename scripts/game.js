@@ -13,6 +13,7 @@ function Game(difficulty) {
   this.mouseUpX = null;
   this.mouseUpY = null;
   this.difficulty = difficulty;
+  this.soundeffect = document.getElementById('bounceSound');
 }
 
 // Append canvas to the DOM, create a Player and start the Canvas loop
@@ -91,6 +92,7 @@ Game.prototype.startLoop = function() {
 };
 
 Game.prototype.checkCollisions = function() {
+    var soundFlag = true;
   if(this.character.didCollide(this.trampoline)) {
     this.trampoline = null;
     this.mouseDownX = null;
@@ -107,7 +109,11 @@ Game.prototype.checkCollisions = function() {
         let ranScore = Math.floor(Math.random() * 10);
         this.score += ranScore;
     }
-    
+    if(soundFlag) {
+        this.soundeffect.pause();
+        this.soundeffect.currentTime = 0;
+        this.soundeffect.play();
+    }
   }
   if(this.character.isInsideScreen()) {
       this.gameOver();

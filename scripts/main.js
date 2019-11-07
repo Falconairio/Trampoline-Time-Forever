@@ -20,7 +20,10 @@ function main() {
   var toLeaderboard = [];
   var HowTo; //How to Play Screen 
   var bgm = document.getElementById('bgm');
+  var buttons = document.querySelectorAll('button');
+  var select = document.getElementById('select');
 
+  
   function createSplashScreen() {
     splashScreen = buildDom(`
     <main class = "bigwords">
@@ -83,9 +86,9 @@ function main() {
     `)
     document.body.appendChild(AboutScreen);
     var backButton = AboutScreen.querySelector('.backbutton');
-    backButton.addEventListener('click', function() {
-      removeAboutScreen();
-      createSplashScreen();
+        backButton.addEventListener('click', function() {
+        removeAboutScreen();
+        createSplashScreen();
     });
   }
 
@@ -151,7 +154,7 @@ function main() {
     <main class = 'mainhowto'>
         <div class = "howtotext">
             <h2>How To Play</h2>
-            <p>Keep the falling red square from touching the bottom. You do this by drawing a white line by clicking and dragging, which will bounce the red square in a random direction, you can bounce the object on either side of the trampoline, and it will also rebound on the walls. You gain points for every bounce and you instantly lose if the red square touches the bottom. Changing the Difficulty will reduce the maximum size of your trampoline. Entering your name will make you eligible for leaderboard status. Entering certain names will trigger secrets.</br> Updates will be made to this page.</p>
+            <p>Keep the falling red square from touching the bottom. You do this by drawing a white line by clicking and dragging, which will bounce the red square in a random direction, you can bounce the object on either side of the trampoline, and it will also rebound on the walls. You gain points for every bounce and you instantly lose if the red square touches the bottom. Changing the Difficulty will reduce the maximum size of your trampoline. Entering your name will make you eligible for leaderboard status. Entering a certain name will trigger secret mode</br> Updates will be made to this page.</p>
         </div>
         <button class = 'backbutton'>Back</button>
     </main>
@@ -381,6 +384,7 @@ function createLeaderboard() {
             <div class = "leaderboardbuttons">
                 <button>To Main Menu</button>
                 <button class = 'backbutn'>Back</button>
+                <button class = 'clear'>Clear Leaderboard</button>
             </div>
         </main>
     `)
