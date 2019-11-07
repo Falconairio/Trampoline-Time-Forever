@@ -20,8 +20,7 @@ function main() {
   var toLeaderboard = [];
   var HowTo; //How to Play Screen 
   var bgm = document.getElementById('bgm');
-  var buttons = document.querySelectorAll('button');
-  var select = document.getElementById('select');
+
 
   
   function createSplashScreen() {
@@ -32,7 +31,7 @@ function main() {
       <img src = "./images/Forever.png" alt = "bruh">
     </div>
     <div class = bottomoptions>
-      <button id = "aboutcreator">About the programmer</button>
+      <button id = "aboutcreator">Copyright</button>
       <button id = "entername">Enter your name</button>
       <button id = "howtoplay">How to play</button>
       <button id = "startbutton">Begin</button>
@@ -76,10 +75,9 @@ function main() {
         <main class = 'aboutmain'>
         <div class = "test">
             <div class = "abouttext">
-                <h2>About the Programmer</h2>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique deserunt quas itaque, eligendi dolore, saepe quae doloribus quaerat odio, placeat adipisci quisquam consectetur voluptates nam accusamus aperiam hic alias provident? Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique deserunt quas itaque, eligendi dolore, saepe quae doloribus quaerat odio, placeat adipisci quisquam consectetur voluptates nam accusamus aperiam hic alias provident?</p>
+                <h2>Copyright</h2>
+                <p>Sylvan Saudade - Michael Staple - Grapple Force Rena </br> Pixel Bounce Sound Effect - acquired from freesound.org </br> New Super Mario Bros DS - The idea for the game </br> </br>I just needed something to put in this section to round out the menu design, originally it was an about me section but thats not that interesting. I have changed it out for a copyright section in the offchance someone unearths this in the future. This is being written on the final night just before the code freeze. I had fun working on this.</p>
             </div>
-            <img src = "./images/newMan.png">
         </div>
             <button class = 'backbutton'>Back</button>
         </main>
@@ -154,7 +152,7 @@ function main() {
     <main class = 'mainhowto'>
         <div class = "howtotext">
             <h2>How To Play</h2>
-            <p>Keep the falling red square from touching the bottom. You do this by drawing a white line by clicking and dragging, which will bounce the red square in a random direction, you can bounce the object on either side of the trampoline, and it will also rebound on the walls. You gain points for every bounce and you instantly lose if the red square touches the bottom. Changing the Difficulty will reduce the maximum size of your trampoline. Entering your name will make you eligible for leaderboard status. Entering a certain name will trigger secret mode</br> Updates will be made to this page.</p>
+            <p>Keep the falling red square from touching the bottom. You do this by drawing a white line by clicking and dragging, which will bounce the red square in a random direction, you can bounce the object on either side of the trampoline, and it will also rebound on the walls. You gain points for every bounce and you instantly lose if the red square touches the bottom. Changing the Difficulty will reduce the maximum size of your trampoline. Entering your name will make you eligible for leaderboard status. Entering a certain name will trigger secret mode</p>
         </div>
         <button class = 'backbutton'>Back</button>
     </main>
@@ -418,6 +416,7 @@ function setLeaderboard(array) {
         if (a.score < b.score){
           return 1;
         }
+        return 0;
       }
       array.sort(compare);
       console.log(toLeaderboard);

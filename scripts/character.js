@@ -1,5 +1,5 @@
 'use strict'
-function Character(canvas, speed) {
+function Character(canvas, speed, difficulty) {
     this.canvas = canvas;
     this.ctx = this.canvas.getContext('2d');
   
@@ -7,10 +7,20 @@ function Character(canvas, speed) {
   
     this.x = this.canvas.width/2 - 25;
     this.y = this.x - 500;
-    this.speed = speed;
+    this.speed;
     this.xspeed = 0;
     this.yspeed = 1;
     this.soundeffect = document.getElementById('bounceSound');
+    this.difficulty = difficulty;
+    if(this.difficulty === 0) {
+        this.speed = speed;
+    } else if(this.difficulty === 1) {
+        this.speed = speed + 1;
+    } else if(this.difficulty === 2) {
+        this.speed = speed + 2;
+    } else {
+        this.speed = Math.random() * 10;
+    }
   }
   Character.prototype.draw = function() {
   
@@ -21,9 +31,8 @@ function Character(canvas, speed) {
   };
   
   Character.prototype.updatePosition = function() {
-    //console.log(this.x + " " + this.y);
-    this.y = this.y + (this.yspeed * this.speed);
-    this.x = this.x + (this.speed * this.xspeed)
+        this.y = this.y + (this.yspeed * this.speed);
+        this.x = this.x + (this.speed * this.xspeed);
   };
   
   Character.prototype.isInsideScreen = function() {

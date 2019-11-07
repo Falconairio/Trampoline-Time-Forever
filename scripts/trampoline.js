@@ -34,13 +34,13 @@ function Trampoline(canvas, mDownX, mDownY, mUpX, mUpY,difficulty) {
         }
         if(mDownY > mUpY) {
             this.sizeheight = mDownY - mUpY;
-            if(this.sizeheight > 10) {
+            if(this.sizeheight > 0) {
                 this.sizeheight = 10;
             }
             this.y = mUpY;
         } else {
             this.sizeheight = mUpY - mDownY;
-            if(this.sizeheight > 10) {
+            if(this.sizeheight > 0) {
                 this.sizeheight = 10;
             }
             this.y = mDownY;

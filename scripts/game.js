@@ -34,7 +34,7 @@ Game.prototype.start = function() {
 
   // Create a new player created trampoline for the current game
 
-  this.character = new Character(this.canvas, 5);
+  this.character = new Character(this.canvas, 5, this.difficulty);
   // Add event listener for moving the player
   this.handleMouseDown = function(event) {
     //console.log('mouse down x = ' + event.clientX);

@@ -171,13 +171,13 @@ label {
     justify-content: center;
 }
 .backbutton {
-    margin-left: 510px;
+    margin-left: 520px;
 }
 .bottomoptions {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
-    padding-left: 10px;
+    padding-left: 40px;
 }
 .bottomoptions button {
     margin-right:  40px;
@@ -191,10 +191,14 @@ label {
     border: 2px solid yellow;
     border-radius: 10px;
     width: 500px;
-    margin-left: 300px;
+    margin-left: 370px;
 }
 .abouttext p {
     line-height: 40px;
+}
+.aboutmain {
+    display: flex;
+    flex-direction: column;
 }
 .test {
     display: flex;
