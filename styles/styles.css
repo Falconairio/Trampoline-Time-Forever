@@ -25,7 +25,7 @@ footer, header, hgroup, menu, nav, section {
 }
 body {
     line-height: 1;
-    background-size: cover ;
+    background-size: cover;
 }
 ol, ul {
 	list-style: none;
@@ -347,9 +347,6 @@ input[type=text]:focus {
 }
 .easydifficulty {
     background-image: url(../images/EasyBackground.jpg);
-}
-.mediumdifficulty {
-
 }
 .harddifficulty {
     background-image: url(../images/HellBackground.jpg);

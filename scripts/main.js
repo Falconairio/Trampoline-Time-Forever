@@ -31,7 +31,7 @@ function main() {
       <img src = "./images/Forever.png" alt = "bruh">
     </div>
     <div class = bottomoptions>
-      <button id = "aboutcreator">Copyright</button>
+      <button id = "copyright">Copyright</button>
       <button id = "entername">Enter your name</button>
       <button id = "howtoplay">How to play</button>
       <button id = "startbutton">Begin</button>
@@ -41,7 +41,7 @@ function main() {
     
     document.body.appendChild(splashScreen);
     document.body.classList.add('startandend')
-    var aboutButton = splashScreen.querySelector('#aboutcreator');
+    var aboutButton = splashScreen.querySelector('#copyright');
     aboutButton.addEventListener('click', function() {
         removeSplashScreen();
         createAboutScreen();
@@ -335,7 +335,7 @@ function createLeaderboard() {
             <div class = "leaderboardcontainter">
                 <div>
                     <ol class = "leaderboardlist" id = "name">
-                        <header>Top Players</header>
+                        <header>Top Players:</header>
                         <li>________</li>
                         <li>________</li>
                         <li>________</li>
@@ -350,7 +350,7 @@ function createLeaderboard() {
                 </div>
                 <div>
                 <ol class = "secondleaderboardlist" id = "score">
-                    <header>Score</header>
+                    <header>Score:</header>
                         <li>________</li>
                         <li>________</li>
                         <li>________</li>
@@ -365,7 +365,7 @@ function createLeaderboard() {
                 </div>
                 <div>
                 <ol class = "secondleaderboardlist" id = "difficulty">
-                    <header>Difficulty</header>
+                    <header>Difficulty:</header>
                         <li>________</li>
                         <li>________</li>
                         <li>________</li>
